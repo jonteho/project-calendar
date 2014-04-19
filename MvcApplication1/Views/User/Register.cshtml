@@ -1,0 +1,42 @@
+﻿@model MvcApplication1.Models.User
+
+<div class="eventDiv well pagination-centered">
+    <ul class="nav nav-pills ">
+        <li>@Html.ActionLink("Logga in", "LogIn", "User")</li>
+        <li class="active">@Html.ActionLink("Registrera", "Register", "User")</li>
+    </ul>
+    <hr />
+    <h2>Registrera dig</h2>
+        <label class="label-warning" for="inputLabel"></label>
+    <input type="hidden" id="inputLabel" name="inputLabel">
+
+    <form name="myForm" class="" action="/user/createuser" onsubmit="return validateForm()" method="POST">
+        
+        <div class="control-group">
+            <label class="control-label" for="inputUserName">Namn</label>
+            <div class="controls">
+                <input type="text" id="inputUserName" name="Name" placeholder="Namn" >
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputUserEmail">Email</label>
+            <div class="controls">
+                <input type="text" id="inputUserEmail" name="Email" placeholder="user@host.com">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputUserPassword">Lösenord</label>
+            <div class="controls">
+                <input type="password" id="inputUserPassword" name="Password" placeholder="Lösenord">
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" value="Submit" class="btn btn-primary">Registrera</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+    

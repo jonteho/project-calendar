@@ -1,0 +1,11 @@
+﻿
+<div class="myEventDiv well pagination-centered">
+    <ul class="nav nav-pills">
+        <li class="active">@Html.ActionLink("Hem", "Index", "Calendar")</li>
+        <li>@Html.ActionLink("Min Kalender", "Month", "Calendar")</li>
+        <li>@Html.ActionLink("Byt lösenord", "ChangePassword", "User")</li>
+        <li class="pull-right">@Html.ActionLink("Logga ut", "Logout", "User")</li>
+    </ul>
+    <hr />
+    <h3>Välkommen, @HttpContext.Current.User.Identity.Name</h3>
+</div>

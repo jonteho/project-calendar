@@ -1,0 +1,36 @@
+﻿@model MvcApplication1.Models.User
+
+<div class="eventDiv well pagination-centered">
+    <ul class="nav nav-pills ">
+        <li class="active">@Html.ActionLink("Logga in", "LogIn", "User")</li>
+        <li>@Html.ActionLink("Registrera", "Register", "User")</li>
+    </ul>
+    <hr />
+    <h2>Logga in | Kalender</h2>
+    <form class="" action="/user/login" method="POST">
+        <div class="control-group">
+            <label class="control-label" for="inputEmail">Email</label>
+            <div class="controls">
+                <input type="text" id="inputEmail" name="Email" placeholder="Email">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputPassword">Lösenord</label>
+            <div class="controls">
+                <input type="password" id="inputPassword" name="Password" placeholder="Lösenord">
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" class="btn btn-primary">Logga in</button>
+	            <p>@Html.ActionLink("Glömt lösenord?", "ResetPassword")</p>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+

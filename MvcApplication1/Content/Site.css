@@ -1,0 +1,180 @@
+﻿body {
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    color: #232323;
+    background-color: #fff;
+    margin:50px 0px; padding:0px;
+}
+header, footer, nav, section {
+    display: block;
+}
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+fieldset {
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+textarea {
+    min-height: 75px;
+}
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.editor-field {
+    margin: 0.5em 0 0 0;
+}
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+/* End for validation helpers
+-----------------------------------------------------------*/
+
+
+/*    Veckovyn      */
+.time {
+  width:15px;
+  font-size: 10px;
+  padding-left: 8px;
+  padding-right: 2px;
+}
+.pullWeeksLinks {
+    font-family: monospace;
+    float: left;
+    text-decoration: none;
+    font-size: 12px;
+    color: #08c;
+}
+
+.days2 {
+      background-color: #294f9f;
+      color: white;
+      font-family: Corbel;
+}
+
+.days2 td:hover {
+
+    font-size: 17px;
+}
+.weekDayRow {
+    background-color: #b4cbdd;  
+    border-style: dotted solid;
+    padding-left: 8px;
+}
+
+td {
+  height: 28px;
+}
+
+td:hover {
+    background: silver;
+    font-weight: bold;
+}
+/*  ----------------*/
+
+
+
+/* ----- */
+
+.links {
+    text-decoration: none;
+    font-size: 20px;
+}
+table {
+ width: 100%;
+ border-collapse: collapse;
+}
+td a:link, td a:visited {
+ text-decoration: none;
+}
+.year {
+ font-family: monospace;
+ font-size: 1.5em;
+ padding: 0;
+ margin: 0;
+}
+.month {
+ font-family: monospace;
+ font-size: 2em;
+ padding: 0;
+ margin: 0;
+}
+.days {
+    background-color: #294f9f;
+    color: white;
+    font-family: Corbel;
+    width: 75px;
+    font-size: 17px;
+}
+.date {
+ font-family: Centaur;
+ text-decoration: none;
+ float: left;
+ width: 1.5em;
+ height: 3em;
+ text-align: center;
+ font-size: 20px;
+}
+td {
+ width: 14%;
+ background-color: #b4cbdd;
+ border: 1px solid white;
+ vertical-align: top;
+}
+.notInMonth {
+    background-color: #ead4d4;
+    color: grey;
+    font-style: italic;
+}
+.eventDiv {
+    width:350px;
+	margin: auto;
+	padding:15px;
+    margin-top: 100px;
+}
+.myEventTable {
+    border: 0px;
+    border-bottom: 1px solid white;
+    background-color: #f5f5f5;
+}
+.myEventDiv {
+    width:800px;
+	margin: auto;
+	padding:15px;
+    margin-top: 100px;
+}
+.myEventButtons {
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-top: 0px;
+    margin-bottom: 15px;
+}
+
+

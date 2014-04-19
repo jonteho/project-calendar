@@ -1,0 +1,41 @@
+﻿@model List<MvcApplication1.Models.Events>
+
+<div class="myEventDiv well">
+    <ul class="nav nav-pills ">
+        <li class="active">@Html.ActionLink("Mina händelser", "ShowEvent", "Calendar")</li>
+        <li>@Html.ActionLink("Min kalender", "Month", "Calendar")</li>
+    </ul>
+    <hr />
+    <h2 class="pagination-centered">Mina händelser</h2>
+    <table class="pagination-centered">
+        <tr>
+            <th>Starttid</th>
+            <th>Sluttid</th>
+            <th>Datum</th>
+            <th>Rubrik</th>
+            <th>Beskrivning</th>
+        </tr>
+        @foreach (var e in Model.OrderBy(e => e.Date))
+        {
+            <td>@e.StartTime</td>
+            <td>@e.EndTime</td>
+            <td>@e.Date</td>
+            <td>@e.Header</td>
+            <td>@e.Description</td>
+                
+            <td class="myEventTable">
+                <p>
+                    <form class="myEventButtons pull-left" action="/Calendar/EditEvent" method="GET">
+                        <button type="submit" name ="id" value="@e.Id" class="btn btn-primary btn-mini">Ändra</button>
+                    </form>
+                </p>
+                <p>
+                    <form class="myEventButtons pull-right" action="/Calendar/DeleteEvent" method="POST">
+                        <button type="submit" name ="id" value="@e.Id" class="btn btn-danger btn-mini">Ta bort</button>
+                    </form>
+                </p>
+            </td>
+            <tr></tr>
+        }
+    </table>
+</div>

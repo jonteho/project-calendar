@@ -1,0 +1,100 @@
+﻿@model MvcApplication1.Models.Month
+
+
+<div class="myEventDiv well">
+    <ul class="nav nav-pills pull-right">
+        <li><a href="#modalAdd" class="" data-toggle="modal">Lägg till händelse</a></li>
+        <li>@Html.ActionLink("Mina händelser", "showevent", "Calendar")</li>
+        <li class="active">@Html.ActionLink("Månad", "Month", "Calendar")</li>
+        <li>@Html.ActionLink("Vecka", "Week", "Calendar")</li>
+    </ul>
+    <ul class="nav nav-pills">
+        <li>@Html.ActionLink("Hem", "Index", "Calendar")</li>
+        <li class="active">@Html.ActionLink("Min Kalender", "Month", "Calendar")</li>
+    </ul>
+    <hr />
+
+    <!-- Modal, AddEvent -->
+    <div id="modalAdd" class="modal hide fade pagination-centered" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="modalAddLabel">Lägg till händelse</h3>
+        </div>
+        <div class="modal-body">
+            <form action="/calendar/addEvent" method="POST" id="addEvent">
+                <p>Starttid: </p>@Html.TextBoxFor(s => s.Events.StartTime, new { @placeholder = "06:00", @id = "StartTime" })<br />
+                <p>Sluttid: </p>@Html.TextBoxFor(s => s.Events, new { @placeholder = "23:00", @id = "EndTime" })<br />
+                <p>Datum: </p>@Html.EditorFor(model => model.Events.Date)<br />
+                <p>Rubrik: </p>@Html.TextBoxFor(s => s.Events.Header, new { @placeholder = "Ex. Möte", @id = "Header" })<br />
+                <p>Beskrivning: </p>@Html.TextAreaFor(s => s.Events.Description, new { @placeholder = "Var? När? Hur?", @id = "Description" })<br />
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" onclick="Save()">Lägg till</button>
+        </div>
+    </div>
+    <!-- End Modal -->
+
+    <table cellspacing="0">
+        <tr>
+        </tr>
+        <tr>
+            <th colspan="7" class="year">
+                <p class="pull-left links">@Html.ActionLink("< " + @Model.TodaysDate.AddMonths(-1).ToString("MMMM yyyy"),
+                                                            "Month", new { Year = Model.PrevMonth.Year, Month = Model.PrevMonth.Month })</p>
+                @Model.TodaysDate.ToString("MMMM yyyy").ToUpper()
+                <p class="pull-right links">@Html.ActionLink(@Model.TodaysDate.AddMonths(1).ToString("MMMM yyyy") + " >",
+                                                             "Month", new { Year = Model.NextMonth.Year, Month = Model.NextMonth.Month })</p>
+                
+            </th>
+        </tr>
+        <tr class="days">
+            @for (int i = 1; i < 8; i++)
+            {
+                <th>
+                    @Model.Listweekdays[i]
+                </th>
+            }
+        </tr>
+        <tr>
+            @for (var t = 1; t < (Model.FirstDateInMonth); t++)
+            {
+                <td class="notInMonth">
+
+                    <p class="date">@(Model.DatesLastMonth + 1 - Model.FirstDateInMonth + t)</p>
+
+                </td>
+            }
+            @for (int x = 1, dayCounter = Model.FirstDateInMonth; x <= Model.Dates; x++, dayCounter++)
+            {
+                <td id="da">
+                    <p class="date">@x</p>
+
+                    @foreach (var e in Model.EventsList)
+                    {
+                        if (e.Date.Year == Model.TodaysDate.Year && e.Date.Month == Model.TodaysDate.Month && e.Date.Day == x)
+                        {
+                        <form class="myEventButtons pull-left" action="/Calendar/EditEvent" method="GET">
+                            <button type="submit" name ="id" value="@e.Id" class="btn btn-inverse btn-mini">@e.Header</button>
+                        </form>
+                        }
+                    }
+                    @if (dayCounter == 7)
+                    {
+                        <tr></tr>
+                        dayCounter = 0;
+                    }
+                </td>
+            }
+            @for (var t = 1; t <= (7 - Model.LastDateInMonth); t++)
+            {
+                <td class="notInMonth">
+
+                    <p class="date">@(t)</p>
+
+                </td>
+            }
+        </tr>
+    </table>
+</div>
+

@@ -1,0 +1,26 @@
+﻿@model MvcApplication1.Models.Events
+
+<div class="eventDiv well pagination-centered">
+    <ul class="nav nav-pills ">
+        <li class="active">@Html.ActionLink(@Model.Header, "EditEvent", "Calendar")</li>
+        <li>@Html.ActionLink("Min kalender", "Month", "Calendar")</li>
+    </ul>
+    <hr />
+    <h2>@Model.Header</h2>
+
+    <form action="/calendar/EditEvent" method="POST">
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.User_Id)
+        <p>Starttid: </p>@Html.EditorFor(s => s.StartTime)<br />
+        <p>Sluttid: </p>@Html.EditorFor(s => s.EndTime)<br />
+        <p>Datum: </p>@Html.EditorFor(s => s.Date)<br />
+        <p>Rubrik: </p>@Html.EditorFor(s => s.Header)<br />
+        <p>Beskrivning: </p>@Html.EditorFor(s => s.Description)<br />
+        <p>
+            <button type="submit" class="btn btn-primary">Ändra</button>
+        </p>
+    </form>
+    <form action="/Calendar/DeleteEvent" method="POST">
+        <button type="submit" name ="id" value="@Model.Id" class="btn btn-danger">Ta bort</button>
+    </form>
+</div>
